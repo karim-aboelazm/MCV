@@ -1,0 +1,289 @@
+{% load static %}
+<div class="col-md-3 pt-5" style="background:#1a1c08;border-radius:25px;height:500px auto;">
+    <p class="fontclass text-center mb-5"><span
+        style="font-size: 25px;color:rgb(243, 243, 243) ; font-weight: 700;">D</span>river Attitude</p>
+    <div class="container classificationcontainer2 ">
+      {% with request.resolver_match.url_name as url_name %}
+      {% if url_name != 'home' %}
+      <div class="row">
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "Driving safe" %}
+          <div class="card py-3 classifcationcards pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/drive-safe.png" class="card-img" alt="safe">
+                <p class="text-white text-center" style="font-size: 15px;">Driving safe</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/drive-safe.png" class="card-img" alt="safe">
+                <p class="text-white text-center" style="font-size: 15px;">Driving safe</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "Turn on radio" %}
+           <div class="card py-3 classifcationcards pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/turn-on-radio.png" class="card-img" alt="safe">
+                <p class="text-white text-center" style="font-size: 15px;">Turn on radio</p>
+            </div>
+          </div>
+          {% else %}
+           <div class="card py-3 classifcationcards pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/turn-on-radio.png" class="card-img" alt="safe">
+                <p class="text-white text-center" style="font-size: 15px;">Turn on radio</p>
+            </div>
+          </div>
+          {% endif %}
+         
+
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "Texting left" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/texting-left.png" class="card-img" alt="safe">
+                <p class="text-white text-center" style="font-size: 15px;">Texting left</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/texting-left.png" class="card-img" alt="safe">
+                <p class="text-white text-center" style="font-size: 15px;">Texting left</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "Texting right" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/texting-right.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Texting right</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/texting-right.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Texting right</p>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "Talk with left" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/talk-on-phone-left.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Talk with left</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/talk-on-phone-left.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Talk with left</p>
+            </div>
+          </div>
+          {% endif %}
+          
+
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "Talk with right" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/talk-on-phone-right.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Talk with right</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/talk-on-phone-right.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Talk with right</p>
+            </div>
+          </div>
+          {% endif %}
+          
+
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "Drinking" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/drinking.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Drinking</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/drinking.png" class="card-img" alt="safe">
+                <p class="text-white text-center">Drinking</p>
+            </div>
+          </div>
+          {% endif %}
+          
+
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "look behind" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/look-behind.png" class="card-img" alt="safe">
+                <p class="text-white text-center">look behind</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/look-behind.png" class="card-img" alt="safe">
+                <p class="text-white text-center">look behind</p>
+            </div>
+          </div>
+          {% endif %}
+          
+
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "hair and makeup" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/hair-and-makeup.png" class="card-img" alt="safe">
+                <p class="text-white text-center">hair and makeup</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/hair-and-makeup.png" class="card-img" alt="safe">
+                <p class="text-white text-center">hair and makeup</p>
+            </div>
+          </div>
+          {% endif %}
+          
+
+        </div>
+
+        <div class="col-md-6 mb-5">
+          {% if driver.driver_action == "talking passenger" %}
+          <div class="card py-3 classifcationcards  pb-0" style="border:2px solid #fff;">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/talking-passenger.png" class="card-img" alt="safe">
+                <p class="text-white text-center">talking passenger</p>
+            </div>
+          </div>
+          {% else %}
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:30%" src="{% static '' %}img/Classifications/talking-passenger.png" class="card-img" alt="safe">
+                <p class="text-white text-center">talking passenger</p>
+            </div>
+          </div>
+          {% endif %}
+          
+
+        </div>
+      </div>
+      {% else %}
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/drive-safe.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+           <div class="card py-3 classifcationcards pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/turn-on-radio.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/texting-left.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/texting-right.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/talk-on-phone-left.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/talk-on-phone-right.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/drinking.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/look-behind.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3"> 
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/hair-and-makeup.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <div class="card py-3 classifcationcards  pb-0">
+            <div class="py-4">
+              <img style="width:40%" src="{% static '' %}img/Classifications/talking-passenger.png" class="card-img py-2" alt="safe">
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      {% endwith %}
+      
+    </div>
+</div>

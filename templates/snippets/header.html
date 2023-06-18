@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <h4 class="bigw">W</h4>
+        <div class="changepose">
+          <h5 class="welcome">Welcome</h5>
+          <div class="bus-id">
+            {% with request.resolver_match.url_name as url_name %}
+            {% if url_name != 'home' %}
+            <p class="bus-id-data">Bus ID : {{car_detail.car_id}}</p>
+            {% endif %}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+      </div>
+      <div class="col-md-2 mapic pt-2">
+        <img src="{% static '' %}img/img.png" style="width:20%;" alt="">
+      </div>
+    </div>
+</div>
+
+  

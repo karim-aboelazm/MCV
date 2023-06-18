@@ -1,0 +1,90 @@
+{% load static %}
+{% with request.resolver_match.url_name as url_name %}
+{% if url_name == 'dashboard' %}
+    <div class="alert">
+      <div class="alert__text text-white" style="opacity: 0.5;"></div>
+      <div class="alert__string"></div>
+    </div>
+    <script>
+      var names = [
+      {% for car in last_cars %}
+      {% for driver in car.driver_set.all %}
+      "car({{car.car_id}}) driver action is : {{ driver.driver_action }}",
+      {% endfor %}{% endfor %}];
+      var alertText = document.querySelector('.alert__text');
+      var nameIndex = 0;
+      alertText.textContent = names[nameIndex];
+      setInterval(function() {
+        nameIndex++;
+        if (nameIndex >= names.length) {
+          nameIndex = 0;
+        }
+        alertText.textContent = names[nameIndex];
+      }, 10000);
+
+    </script>
+    <style>
+      .alert {
+        position: absolute;
+        top: 0;
+        left: 30%;
+        transform: translateX(-50%);
+        width: 500px;
+        height: 50px;
+        border-radius: 25px ;
+        background-color: #0e0b03c4;
+        animation-name: alert-walk;
+        animation-duration: 5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        
+      }
+      
+      .alert__string {
+        position: absolute;
+        top: 300px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 80px;
+        color:#fff;
+        background-color: transparent;
+      }
+      
+      .alert__text {
+        position: absolute;
+        top: 50%;
+        color:#fff;
+        transform: translate(5%, -50%);
+        font-size: 16px;
+        font-weight: bold;
+        color: #000;
+      }
+      
+      @keyframes alert-walk {
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(100px, 0);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+      
+    </style>   
+    
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "80px";
+        document.getElementById("main").style.marginLeft = "80px";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+      }
+    </script>
+  {% endif %}
+  {% endwith %}

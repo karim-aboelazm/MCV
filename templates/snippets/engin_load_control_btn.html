@@ -1,0 +1,78 @@
+{% load static %}
+{% with request.resolver_match.url_name as url_name %}
+{% if url_name != 'home' %}
+<button type="button" class="btn" data-bs-toggle="modal" style="box-shadow:none" data-bs-target="#loadmodal">
+    <div class="col">
+      <div class="card">
+        <p class="classy mb-0"><span style="font-size: 20px;color:rgb(243, 243, 243) ; font-weight: 700;">E</span>ngine load</p>
+        <img src="{% static '' %}img/enload.png" class="card-img" alt="Speed">
+          <p class="my-2 text-white">{{car_detail.car_engine_load}} M/H</p>
+      </div>
+    </div>
+</button>
+{% else %}
+<button type="button" class="btn" data-bs-toggle="" style="box-shadow:none" data-bs-target="#loadmodal">
+    <div class="col">
+      <div class="card">
+        <p class="classy mb-0"><span style="font-size: 20px;color:rgb(243, 243, 243) ; font-weight: 700;">E</span>ngine load</p>
+        <img src="{% static '' %}img/enload.png" class="card-img" alt="Speed">
+          <p class="my-2 text-white"></p>
+      </div>
+    </div>
+</button>
+{% endif %}
+{% endwith %}
+
+<div class="modal fade" id="loadmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Engine load</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" style="box-shadow:none" aria-label="Close"></button>
+      </div>
+      <div class="modal-body "style="margin-left: 20%" >
+        <div class="themeter">
+          <script nonce="undefined" src="https://cdn.zingchart.com/zingchart.min.js"></script>
+          <div class="mx-auto" id="chart_div" style="width: 800px; height: 400px;"></div>
+          
+          <p class="modaltext2"style="margin-left: 11%"> The load is {{car_detail.car_engine_load}} M/H</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="box-shadow:none" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['gauge']});
+    google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Label', 'Value'],
+      ['Engine load', {{car_detail.car_engine_load}}],
+    
+    ]);
+
+    var options = {
+      width: 300, height: 300,
+      redFrom: 90, redTo: 100,
+      yellowFrom:75, yellowTo: 90,
+      minorTicks: 5
+    };
+
+    var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+
+    setInterval(function() {
+      data.setValue({{car_detail.car_engine_load}});
+      chart.draw(data, options);
+    }, 13000);
+    
+  }
+</script>

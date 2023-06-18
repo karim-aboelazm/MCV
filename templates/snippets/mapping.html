@@ -1,0 +1,98 @@
+{% load static %}
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+<style>
+  
+  #map { }
+  </style>
+<div class="row">
+    <div class="col-md-12">
+      <div id="map" style="height:400px; width: 100%; border-radius:25px;"></div>
+      {% with request.resolver_match.url_name as url_name %}
+        {% if url_name != 'driver_dashboard' %}
+            <script>
+                mapboxgl.accessToken = 'pk.eyJ1Ijoia2FyaW1hYm9lbGF6bTYiLCJhIjoiY2xoMmJkN2VqMWJtdDNycGU4Mzcwd3l0biJ9.I1psEN4KjyxTWqnW3dpbLQ';
+                const map = new mapboxgl.Map({
+                    container: 'map', // container ID
+                    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+                    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                    center: [31.473310622915115,30.279327339416007 ], // starting position [lng, lat]
+                    zoom: 10 // starting zoom
+                });
+                
+                // Add map controls
+                map.addControl(new mapboxgl.NavigationControl());
+                // Define the origin and destination points lat,lng
+                const origin = [{{lat_src}},{{lon_src}}] ;
+                const destination = [{{lat_des}},{{lon_des}}];
+                // Define a function to get the directions between two points
+                const getDirections = (origin, destination) => {
+                // Build the API request URL
+                const apiUrl = `https://api.mapbox.com/directions/v5/mapbox/driving/${origin[0]},${origin[1]};${destination[0]},${destination[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
+
+                // Make a request to the Directions API
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        const route = data.routes[0];
+
+                        // Add the route to the map
+                        map.addLayer({
+                            id: 'route',
+                            type: 'line',
+                            source: {
+                                type: 'geojson',
+                                data: {
+                                    type: 'Feature',
+                                    geometry: route.geometry
+                                }
+                            },
+                            paint: {
+                                'line-width': 2,
+                                'line-color': '#0074D9'
+                            }
+                        });
+
+                        // Add the start and end markers to the map
+                        new mapboxgl.Marker({ color: '#FF4136' })
+                            .setLngLat(origin)
+                            .addTo(map);
+                        new mapboxgl.Marker({ color: '#2ECC40' })
+                            .setLngLat(destination)
+                            .addTo(map);
+
+                        // Zoom the map to fit the route
+                        const bounds = route.geometry.coordinates.reduce((bounds, coord) => bounds.extend(coord), new mapboxgl.LngLatBounds(route.geometry.coordinates[0], route.geometry.coordinates[0]));
+                        map.fitBounds(bounds, { padding: 50 });
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+                    };
+                    console.log(origin)
+                    // Call the getDirections function to display the route on the map
+                    getDirections(origin, destination);
+
+            </script>
+        {% else %}
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1Ijoia2FyaW1hYm9lbGF6bTYiLCJhIjoiY2xoMmJkN2VqMWJtdDNycGU4Mzcwd3l0biJ9.I1psEN4KjyxTWqnW3dpbLQ';
+            const map = new mapboxgl.Map({
+                container: 'map', // container ID
+                // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+                style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                center: [{{lat_des}},{{lon_des}}], // starting position [lng, lat]
+                zoom: 6 // starting zoom
+            });
+            new mapboxgl.Marker()
+              .setLngLat([{{lat_des}},{{lon_des}}])
+              .addTo(map);
+        </script>
+        
+        {% endif %}
+    {% endwith %}
+    </div>
+
+  </div>
+  
+  

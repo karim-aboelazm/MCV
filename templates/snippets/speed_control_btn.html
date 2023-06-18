@@ -1,0 +1,320 @@
+{% load static %}
+{% with request.resolver_match.url_name as url_name %}
+{% if url_name != 'home' %}
+<button type="button" class="btn" data-bs-toggle="modal" style="box-shadow:none" data-bs-target="#exampleModal">
+    <div class="col">
+      <div class="card">
+        <p class="classy mb-0"><span style="font-size: 20px;color:rgb(243, 243, 243) ; font-weight: 700;">S</span>Peed</p>
+        <img src="{% static '' %}img/speed.png" class="card-img" alt="Speed">
+          <p class="my-2 text-white">{{car_detail.car_speed}} K/H</p>
+      </div>
+    </div>
+</button>
+{% else %}
+<button type="button" class="btn" data-bs-toggle="" style="box-shadow:none" data-bs-target="#exampleModal">
+  <div class="col">
+    <div class="card">
+      <p class="classy mb-0"><span style="font-size: 20px;color:rgb(243, 243, 243) ; font-weight: 700;">S</span>Peed</p>
+      <img src="{% static '' %}img/speed.png" class="card-img" alt="Speed">
+        <p class="my-2 text-white"></p>
+    </div>
+  </div>
+</button>
+{% endif %}
+{% endwith %}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Driver speed</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body "style="margin-left: 20%" >
+        <div class="themeter">
+          <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+          <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+          <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+          <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+          <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+            <div id="chartdiv"></div>
+          <style>
+            #chartdiv {
+              width	: 300px;
+              height	: 500px;
+              margin-right: 20%;
+            }	
+          </style>
+
+          
+          <p class="modaltext2"style="margin-left: 10%"> The speed is {{car_detail.car_speed}} K/M</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var gaugeChart = AmCharts.makeChart( "chartdiv", {
+  "type": "gauge",
+  "faceAlpha": 1,
+  "faceColor": "#363636",
+  "color": "#FAFAFA",
+  "fontSize": 12,
+  "arrows": [
+    {
+      "color": "#4F7AB3",
+      "id": "GaugeArrow-1",
+      "innerRadius": 0,
+      "nailBorderThickness": 4,
+      "nailRadius": 22,
+      "startWidth": 22,
+      "value": 0
+    }
+  ],
+  "axes": [
+    {
+      "axisThickness": 0,
+      "bottomText": "0 km/h",
+      "bottomTextYOffset": 20,
+      "endValue": 200,
+      "id": "GaugeAxis-1",
+      "labelOffset": 7,
+      "minorTickLength": 0,
+      "tickColor": "#FAFAFA",
+      "tickLength": 10,
+      "tickThickness": 2,
+      "valueInterval": 20,
+      "bands": [
+        {
+          "color": "#32CD32",
+          "endValue": 8,
+          "id": "GaugeBand-1",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 0
+        },
+        {
+          "color": "#15FF00",
+          "endValue": 16,
+          "id": "GaugeBand-2",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 8
+        },
+        {
+          "color": "#2AFF00",
+          "endValue": 24,
+          "id": "GaugeBand-3",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 16
+        },
+        {
+          "color": "#40FF00",
+          "endValue": 32,
+          "id": "GaugeBand-4",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 24
+        },
+        {
+          "color": "#55FF00",
+          "endValue": 40,
+          "id": "GaugeBand-5",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 32
+        },
+        {
+          "color": "200",
+          "endValue": 48,
+          "id": "GaugeBand-6",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 40
+        },
+        {
+          "color": "#7FFF00",
+          "endValue": 56,
+          "id": "GaugeBand-7",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 48
+        },
+        {
+          "color": "#95FF00",
+          "endValue": 64,
+          "id": "GaugeBand-8",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 56
+        },
+        {
+          "color": "#AF0",
+          "endValue": 72,
+          "id": "GaugeBand-9",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 64
+        },
+        {
+          "color": "#BFFF00",
+          "endValue": 80,
+          "id": "GaugeBand-10",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 72
+        },
+        {
+          "color": "#D4FF00",
+          "endValue": 88,
+          "id": "GaugeBand-11",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 80
+        },
+        {
+          "color": "#EAFF00",
+          "endValue": 96,
+          "id": "GaugeBand-12",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 88
+        },
+        {
+          "alpha": 1,
+          "color": "#FF0",
+          "endValue": 104,
+          "id": "GaugeBand-13",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 96
+        },
+        {
+          "color": "#FF0",
+          "endValue": 112,
+          "id": "GaugeBand-14",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 104
+        },
+        {
+          "color": "#FFEA00",
+          "endValue": 120,
+          "id": "GaugeBand-15",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 112
+        },
+        {
+          "color": "#FFD500",
+          "endValue": 128,
+          "id": "GaugeBand-16",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 120
+        },
+        {
+          "color": "#FA0",
+          "endValue": 136,
+          "id": "GaugeBand-17",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 128
+        },
+        {
+          "color": "#FF9500",
+          "endValue": 144,
+          "id": "GaugeBand-18",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 136
+        },
+        {
+          "color": "#FF7F00",
+          "endValue": 152,
+          "id": "GaugeBand-19",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 144
+        },
+        {
+          "color": "#FF6A00",
+          "endValue": 160,
+          "id": "GaugeBand-20",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 152
+        },
+        {
+          "color": "#F50",
+          "endValue": 168,
+          "id": "GaugeBand-21",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 160
+        },
+        {
+          "color": "#FF4000",
+          "endValue": 176,
+          "id": "GaugeBand-22",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 168
+        },
+        {
+          "color": "#FF2B00",
+          "endValue": 184,
+          "id": "GaugeBand-23",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 176
+        },
+        {
+          "color": "#FF1500",
+          "endValue": 192,
+          "id": "GaugeBand-24",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 184
+        },
+        {
+          "color": "#FF0000",
+          "endValue": 200,
+          "id": "GaugeBand-25",
+          "innerRadius": "60%",
+          "radius": "75%",
+          "startValue": 192
+        }
+      ]
+    }
+  ],
+  "allLabels": [],
+  "balloon": {},
+  "titles": [
+    {
+      "id": "Title-1",
+      "size": 15,
+      "text": "Speedometer"
+    }
+  ]
+  } );
+  
+  setInterval( randomValue, 2000 );
+  function randomValue() {
+    var value = Math.round( {{car_detail.car_speed}} );
+    if ( gaugeChart ) {
+      if ( gaugeChart.arrows ) {
+        if ( gaugeChart.arrows[ 0 ] ) {
+          if ( gaugeChart.arrows[ 0 ].setValue ) {
+            gaugeChart.arrows[ 0 ].setValue( value );
+            gaugeChart.axes[ 0 ].setBottomText( value + " km/h" );
+          }
+        }
+      }
+    }
+  };
+</script>

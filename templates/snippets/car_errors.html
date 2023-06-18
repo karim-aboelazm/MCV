@@ -1,0 +1,95 @@
+{% load static %}
+
+<div class="col-md-3 ">
+  <div class="firstblock classificationcontainer">
+    {% with request.resolver_match.url_name as url_name %}
+    {% if url_name == 'driver_dashboard' %}
+    <div class="card" >
+      <div class="row">
+        <div class="col-md-6 mx-auto">
+          <img src="{% if driver.image %}{{driver.image.url}}{% else %}{% static 'img/duser.png' %}{% endif %}" style="width:120px;height:120px;border-radius:50%"  class="card-img-top-center" alt="...">
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          <div class="row text-white">
+            <div class="col-md-4"><strong>Name</strong></div>
+            <div class="col-md-8">: {{driver.full_name}}</div>
+          </div>
+          <div class="row text-white">
+            <div class="col-md-4"><strong>mobile</strong></div>
+            <div class="col-md-8">: {{driver.mobile}}</div>
+          </div>
+          <div class="row text-white">
+            <div class="col-md-4"><strong>car_ID</strong></div>
+            <div class="col-md-8">: {{driver.drive_car.car_id}}</div>
+          </div>
+        </p>
+      </div>
+    </div>
+    {% else %}
+      <p class="classy"><span style="font-size: 30px;color:rgb(243, 243, 243) ; font-weight: 700;">A</span>ll Cars</p>
+      <div style="height:120px !important;overflow-y:auto; ">
+        {% if all_cars %}
+          {% for car in all_cars  %}
+            {% if car_detail.id == car.id %}
+                <div class="textawy1 my-2" style="background:#ECFD00;">
+                  <p class="text-center  py-1" style="font-size:18px;color:#1a1c08;"><a href="{% url 'mcv:dashboard' car.id %}" style="text-decoration:none;">{{car.car_id}}</a></p>
+                  <style>a:hover{color:white;}</style>
+                </div>
+            {% else %}
+              <div class="textawy1">
+                <p class="text-center text-white  py-1" style="font-size:18px;"><a href="{% url 'mcv:dashboard' car.id %}" style="text-decoration:none;">{{car.car_id}}</a></p>
+                <style>a:hover{color:white;}</style>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p>No Busses</p>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% endwith %}
+    
+  </div>
+    <div class="firstblock classificationcontainer my-3">
+      <p class="classy"><span style="font-size: 30px;color:rgb(243, 243, 243) ; font-weight: 700;">C</span>heck
+        Engine</p>
+        <div style="height:200px auto;overflow-y:auto;">
+          {% if car_detail.car_diagnostic_set.all %}
+            {% for error in  car_detail.car_diagnostic_set.all %}
+              <div class="textawy1 p-2 my-2" >
+                <h5 class="textawy px-2 py-1">{{error.diagnostic_sarial}}</h5>
+                <p class="blocktext px-1 text-white" style="font-size:12px">{{error.diagnostic_error_type}}</p>
+              </div>
+            {% endfor %}
+          {% else %}
+          <div class="textawy1 p-2 my-2" >
+            {% comment %} <h5 class="textawy px-2 py-1 text-white">{{car_detail.car_id}}</h5> {% endcomment %}
+            <p class="blocktext px-4 text-white pt-3" style="font-size:12px">Has No Diagnostics Yet !</p>
+          </div>
+          {% endif %}
+        </div>
+      
+    </div>
+    <div class="firstblock classificationcontainer my-3">
+      <p class="classy"><span
+          style="font-size: 30px;color:rgb(253, 253, 253) ; font-weight: 700;">N</span>otification</p>
+      <div style="height:200px auto;overflow-y:auto;">
+        {% if car_detail.car_diagnostic_set.all %}
+            {% for error in  car_detail.car_diagnostic_set.all %}
+              <div class="textawy1 p-2 my-2" >
+                <h5 class="textawy px-2 py-1">{{error.diagnostic_sarial}}</h5>
+                <p class="blocktext px-1 text-white" style="font-size:12px">{{error.diagnostic_error_type}}</p>
+              </div>
+            {% endfor %}
+          {% else %}
+          <div class="textawy1 p-2 my-2" >
+            {% comment %} <h5 class="textawy px-2 py-1 text-white">{{car_detail.car_id}}</h5> {% endcomment %}
+            <p class="blocktext px-4 text-white pt-3" style="font-size:12px">Has No Notificatios Yet !</p>
+          </div>
+          {% endif %}
+      </div>
+     
+    </div>
+  </div>

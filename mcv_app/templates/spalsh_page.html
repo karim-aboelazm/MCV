@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="{% static '' %}img/img.png" rel="icon"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "snippets/splash_design.html" %}
+  <title>Splash</title>
+</head>
+<body>
+  <div class="splash">
+    <div class="splash_logo">
+      <img src="{% static '' %}img/splash.jpg" style="width:100%;" alt="">
+    </div>
+    <div class="splash_svg">
+      <svg width="100%" height="100%">
+        <rect width="100%" height="100%" >
+      </svg>
+    </div>
+    <div class="splash_minimize">
+      <svg width="100%" height="100%">
+        <rect width="100%" height="100%" >
+      </svg>
+    </div>
+  </div>
+  <div class="text">
+    <img src="{% static '' %}img/splash2.png" style="width:100%;" alt="">
+    
+    <button><a href="{% url 'mcv:mcv_driver_login'%}">Get Start</a></button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,446 @@
+{% load static %}
+ <!-- Required meta tags -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="{% static '' %}img/img.png" rel="icon"/>
+ <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+ <script src="https://kit.fontawesome.com/cba01bb0d0.js" crossorigin="anonymous"></script>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link rel="stylesheet" href="{% static '' %}css/mcv.css">
+ <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ 
+ <style>
+  /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+      }
+      
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #1c1d1c; 
+        border-radius: 10px;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #1c1d1c; 
+      }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: #000000;
+      }
+      .sidebar {
+      position: absolute;
+      width: 0%;
+      height: auto;
+      background: #ECFD00;
+      box-shadow: 0px 0px 4px 6px #585E35;
+      border-radius: 0px 60px 60px 0px;
+        overflow-x: hidden;
+        transition: 0.5s;
+        margin-top: 20%;
+      }
+      .sidebar a {
+        text-decoration: solid;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: center;
+        color: #000000;
+        display: block;
+        transition: 0.3s;
+        margin-top: 15px;
+      }
+      .sidebar a:hover {
+      color: #a0a0a0;
+      }
+      .sidebar .closebtn {
+        left: 20.83%;
+        right: 12.5%;
+        top: 5.5%;
+        font-size: 20px;
+      }
+      .aspace {
+          padding-bottom: 15%;
+          padding-right: 15%;
+          }
+      .openbtn {
+          position: relative;
+          font-size: 20px;  
+          background: #ECFD00;
+          box-shadow: 0px 0px 4px 0px #585E35;
+          border-radius: 10px 60px 60px 10px;
+          text-align: center;
+          border: none;
+      }
+      .openbtn:hover{
+        color: #c7c7c7;
+      }
+      #main {
+      transition: margin-left .5s;
+      padding: 5px;
+      position: absolute;
+      border: none;
+      border-radius: 1px 100px 100px 5px;
+      }
+      .bigw{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 80px;
+        line-height: 100px;
+        margin-left: 10px;
+        position: relative;
+        bottom: 15px;
+        color: rgba(238, 255, 0, 0.31);
+      }
+      /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+      .mapic{
+        position: relative;
+        animation: mymove 7s ;
+        
+      }
+      @keyframes mymove {
+        from {left: 170px;}
+        to {left: 0px;}
+      }
+      .changepose{
+        margin-top: -25%;
+        margin-left: 15%;
+      }
+      .welcome{
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 22px;
+        color: #EEFF00;
+      }
+      .firstblock{
+        background: #1a1c08;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+        border-radius: 20px 0px 0px 20px;
+        padding:3% ;
+        margin-right: 0%;
+      }
+      .textawy1{
+        background: rgba(22, 23, 9, 0.5);
+        box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
+        border:2px solid #ECFD00;
+        border-radius: 20px 0px 0px 20px;
+        }
+        .textawy{
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 12px;
+          color: #FFFFFF;
+      }
+      .classy{
+          font-family: 'Poppins';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 48px;
+          text-align: center;
+          color: #ECFD00;
+        }
+      .col .card .classy{
+          font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        -align: center;
+        color: #ECFD00;
+      }
+      .themapcontainer
+      {
+        background: #cbccbe;
+      opacity: 0.8;
+      border-radius: 20px;
+      margin-top: 2%;
+      }
+      .card{
+        background: rgba(22, 23, 9, 0.5);
+        box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      }
+      .card-img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30px;
+      }
+      .card-text{
+        font-size: 12px;
+        color: #FFFFFF;
+        text-align: center;
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 22px;
+
+      color: #FFFFFF;
+      }
+
+      .card .card-img-dist{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -20%;
+        margin-bottom: -8%;
+        width: 30px;
+      }
+      .fontclass{
+        font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 26px;
+      line-height: 39px;
+      color: #ECFD00;
+      }
+      .col-md-3{
+      }
+      .classificationcontainer{
+        background: #1a1c08;
+      opacity: 0.8;
+      border-radius: 20px;
+
+      }
+      .classificationcontainer2{
+      }
+      .classifcationcards{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .classifcationcards .card-img{
+        margin-top: -2rem;
+      }
+      .smallcont{
+      }
+      @media screen and (max-width: 767px) and (min-width: 100px) {
+        .sidebar {padding-top: 15px;}
+        .sidebar a {font-size: 10px;}
+        .classifcationcards{
+          margin: 20px 20px 20px 20px;
+          height: auto;
+        }
+        .fontclass{
+          text-align: center;
+        }
+        .classy{
+          text-align: center;
+        }
+        .classificationcontainer{
+          margin-top: 12%;
+          opacity: 0.8;
+          border-radius: 20px;
+        }
+        
+        .themapcontainer
+      {
+        margin-top: 12%;
+        margin-bottom: 10%;
+        opacity: 0.8;
+        border-radius: 20px;
+      }
+
+      }
+      @media screen and (max-width: 1245px) and (min-width: 768px) {
+        .classificationcontainer{
+          margin-top: 0;
+          margin-left: 0;
+          display: flex;
+          flex-wrap: wrap;
+          flex: 100%;
+        }
+        .smallcont{
+          padding-top:15%;
+          padding-bottom:7%;
+
+        }
+        .map{
+          display: flex;
+          flex-wrap: wrap;
+          flex: 50%;
+          
+          margin-bottom: 10%;
+        }
+        .themapcontainer
+      {
+          display: flex;
+          flex-wrap: wrap;
+          flex: 50%;
+          width: 100%;
+          margin-bottom: 10%;
+      }
+        .classifcationcards{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .classifcationcards .card-img{
+          margin-top: -2rem;
+        }
+      }
+      @media screen and (min-width: 1245px) {
+        .classificationcontainer{
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+
+        }
+      }
+      @media screen and (max-width: 1552px) and (min-width: 1245px) {
+        .themapcontainer
+      {
+        width: 100%;
+        margin: 0%;
+      }
+      }
+      @media screen and (max-width: 1708px) {
+        .classificationcontainer{
+          margin-top: -2%;
+        }
+      }
+      @media screen and (min-width: 1708px) {
+        .classificationcontainer{
+          margin-top: -3%;
+        }
+      }
+      @media screen and (min-width: 2500px) {
+        .classificationcontainer{
+          margin-top: 0%;
+        }
+      }
+      .modaltext2{
+        font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 60px;
+      color: #000000;
+      }
+      .blocktext{
+      font-family: 'Poppins';
+      font-style: normal;
+      font-size: 8px;
+      color: #13130F;
+      }
+
+      .speedmeter__circle--outer {
+        fill: url(#SVGID_1_);
+      }
+
+      .speedmeter__circle--inner {
+        fill: url(#SVGID_2_);
+        stroke: #29ABE2;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+      }
+
+      .speedmeter__fuelmeter__clip {
+        clip-path: url(#SVGID_4_);
+        transform: translate(0, -3.5px);
+      }
+
+      .speedmeter__shadow {
+        opacity: 0.25;
+      }
+
+      .speedmeter__fuelmeter {
+        fill: url(#SVGID_5_);
+      }
+
+      .speedmeter__circle--small {
+        fill: url(#SVGID_6_);
+      }
+
+      .speedmeter__circle--small2 {
+        fill: url(#SVGID_7_);
+      }
+
+      .speedmeter__blue-stuff {
+        fill: #29ABE2;
+      }
+
+      .speedmeter__fueldots--end {
+        fill: none;
+        stroke: #29ABE2;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .speedmeter__fueldots {
+        fill: none;
+        stroke: #29ABE2;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 0, 24.0916;
+      }
+
+      .speedmeter__speeddots--end {
+        fill: none;
+        stroke: #29ABE2;
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .speedmeter__speeddots {
+        fill: none;
+        stroke: #29ABE2;
+        stroke-width: 7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 0, 50.2085;
+      }
+
+      .speedmeter__fuelicon__tube {
+        fill: none;
+        stroke: #29ABE2;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+      }
+
+      .speedmeter__speednumber {
+        font-size: 20px;
+      }
+
+      .speedmeter__text--small {
+        font-size: 25px;
+        text-anchor: middle;
+      }
+
+      .speedmeter__text--large {
+        font-size: 50px;
+        text-anchor: middle;
+      }
+
+      .speedmeter__meter {
+        transform-origin: 50%;
+        transition: 0.5s;
+      }
+
+
+ </style>

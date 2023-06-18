@@ -1,0 +1,41 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+  <head>
+    <title>Dashboard</title>
+    {% include 'snippets/head.html' %}
+    <link href="{% static '' %}img/img.png" rel="icon"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"defer></script>
+  </head>
+  <body>
+    {% include 'snippets/header.html' %}
+    <div class="container">
+      <div class="col-md-11 mx-auto mt-3">
+          <div class="row mb-3">
+            {% include 'snippets/car_errors.html' %}
+            <div class="col-md-6">
+                {% include "snippets/mapping.html" %}
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="container-fluid mt-5">
+                      <p class="fontclass text-center"><span style="font-size: 25px;color:rgb(253, 253, 253) ; font-weight: 600; text-align: left;">C</span>ontrols </p>
+                      <div class="row row-cols-sm-3 ">
+                        {% include 'snippets/speed_control_btn.html' %}
+                        {% include 'snippets/distance_control_btn.html' %}
+                        {% include 'snippets/engin_temp_control_btn.html' %}
+                        {% include 'snippets/rpm_control_btn.html' %}
+                        {% include 'snippets/runtime_control_btn.html' %}
+                        {% include 'snippets/engin_load_control_btn.html' %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            {% include "snippets/driver.html" %}
+            {% include "snippets/alart.html" %}
+      </div>
+    </div>
+    {% include 'snippets/scripts.html' %}
+  </body>
+</html>

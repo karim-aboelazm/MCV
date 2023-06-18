@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Admin Login</title>
+    <link href="{% static '' %}img/img.png" rel="icon"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    {% include 'snippets/login_style.html' %}
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post" class="form">
+      {% csrf_token %}
+        <h3>Admin Login Here</h3>
+        {% if messages %}
+        <div class="modal" style="margin-top: 40px;">
+          <h1 class="title" style="text-align: center;">
+            <img src="http://100dayscss.com/codepen/alert.png" width="80" height="80"  style="margin: 20px;"/><br>Oops!</h1>
+          {% for message in messages %}
+            <p style="text-align: center;font-size: 18px;">Error - {{ message }}</p>
+          {% endfor %}
+          <button class="button" type="button" onclick="dismissMessage()">OK</button>
+        </div>
+      {% endif %}
+      
+      <div class="form-content" style="display: {% if messages %}none{% else %}block{% endif %};">
+  
+        <label for="username">Username</label>
+        <input type="text" name="username" placeholder="username" id="username">
+
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="password" id="password">
+
+        <button type="submit">Log In</button>
+        <p class="mt-5" style="margin-top:25px;">if you are a Driver  
+          <a href="{% url 'mcv:mcv_driver_login' %}">Login as Driver</a> 
+        </p>
+      </div>
+    </form>
+    <script>
+      function dismissMessage() {
+        document.querySelector('.modal').style.display = 'none';
+        document.querySelector('.form-content').style.display = 'block';
+      }
+    </script>
+    
+      
+      <style>
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+      </style>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% load static %}
+{% with request.resolver_match.url_name as url_name %}
+{% if url_name != 'home' %}
+<button type="button" class="btn" data-bs-toggle="modal" style="box-shadow:none" data-bs-target="#distancemodal">
+    <div class="col">
+      <div class="card">
+        <p class="classy mb-0"><span style="font-size: 20px;color:rgb(243, 243, 243) ; font-weight: 700;">D</span>istance</p>
+        <img src="{% static '' %}img/distance.png" class="card-img" alt="Speed">
+          <p class="my-2 text-white"> {{car_detail.car_distance}}M/H</p>
+      </div>
+    </div>
+</button>
+{% else %}
+<button type="button" class="btn" data-bs-toggle="" style="box-shadow:none" data-bs-target="#distancemodal">
+    <div class="col">
+      <div class="card">
+        <p class="classy mb-0"><span style="font-size: 20px;color:rgb(243, 243, 243) ; font-weight: 700;">D</span>istance</p>
+        <img src="{% static '' %}img/distance.png" class="card-img" alt="Speed">
+          <p class="my-2 text-white"></p>
+      </div>
+    </div>
+</button>
+{% endif %}
+{% endwith %}
+
+<div class="modal fade" id="distancemodal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">distance</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" style="box-shadow:none" aria-label="Close"></button>
+      </div>
+      <div class="modal-body "style="margin-left:150px" >
+        <div class="themeter">
+          <!-- Odometr includes -->
+        <link rel="stylesheet" href="https://github.hubspot.com/odometer/themes/odometer-theme-car.css" />
+        <script src="https://github.hubspot.com/odometer/odometer.js"></script>
+        <div id="odometer" class="odometer">0</div>
+          <style>
+            .odometer{
+              font-size:30px;
+              position:relative;
+              
+              margin-top:60px; 
+            }
+          </style>
+          <p class="modaltext2"style="margin-left: 1%"> Distance taken {{car_detail.car_distance}} M/H</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  setTimeout(function(){
+    odometer.innerHTML = {{car_detail.car_distance}};
+  }, 2000);
+</script>
